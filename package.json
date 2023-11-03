@@ -1,0 +1,12 @@
+{
+  "name": "capstonremake",
+  "version": "1.0.0",
+  "description": "Capston Project full Stack Application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "ehtisham",
+  "license": "ISC"
+}
