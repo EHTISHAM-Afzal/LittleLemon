@@ -4,7 +4,7 @@
   "description": "Capston Project full Stack Application",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node LittleLemonBackend/App.js"
   },
   "keywords": [],
   "author": "ehtisham",

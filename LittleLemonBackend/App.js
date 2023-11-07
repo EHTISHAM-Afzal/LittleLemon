@@ -14,7 +14,7 @@ app.use(express.json({ limit: "25mb" }));
 app.use(cors());
 app.use(morgan("dev"));
 app.use("/api/dishes", DishRoutes);
-app.use("/api/catagory", catagoriesRouter);
+app.use("/api/catagories", catagoriesRouter);
 
 
 const port = process.env.PORT || 3002;
