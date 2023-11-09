@@ -5,7 +5,7 @@ import catagoriesRouter from './Routes/catagories.js';
 import connectDB from './MongoDB/Connect.js';
 import * as dotenv from 'dotenv';
 import cors from 'cors';
-import TablesRoutes from "./Routes/bookingTable.js";
+import TablesRoutes from "./Routes/BookingTable.js";
 
 
 dotenv.config();
