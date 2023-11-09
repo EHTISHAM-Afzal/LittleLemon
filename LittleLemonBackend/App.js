@@ -5,6 +5,7 @@ import catagoriesRouter from './Routes/catagories.js';
 import connectDB from './MongoDB/Connect.js';
 import * as dotenv from 'dotenv';
 import cors from 'cors';
+import TablesRoutes from "./Routes/bookingTable.js";
 
 
 dotenv.config();
@@ -15,6 +16,7 @@ app.use(cors());
 app.use(morgan("dev"));
 app.use("/api/dishes", DishRoutes);
 app.use("/api/catagories", catagoriesRouter);
+app.use("/api/tables", TablesRoutes );
 
 
 const port = process.env.PORT || 3002;
