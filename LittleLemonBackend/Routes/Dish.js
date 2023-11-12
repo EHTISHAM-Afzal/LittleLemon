@@ -10,8 +10,8 @@ router.get("/", async (req, res) => {
         );
 });
 
-router.get("/:name", async (req, res) => {
-    await Dish.find({ name: req.params.name })
+router.get("/:id", async (req, res) => {
+    await Dish.findById(req.params.id)
         .then((response) => response.length == 0 ? res.status(400).send("Cannot find Dish") : res.send(response))
         .catch((err) =>
             res
@@ -31,8 +31,8 @@ router.post("/", async (req, res) => {
                 .send({ message: "Oops cant save the Dish", error: err.message }))
 });
 
-router.put("/:name", async (req, res) => {
-    await Dish.findOneAndUpdate({ name: req.params.name }, req.body, { new: true })
+router.put("/:id", async (req, res) => {
+    await Dish.findByIdAndUpdate(req.params.id, req.body, { new: true })
         .then((response) =>
             response === null ? res.status(400).send("Cannot find the Dish") :
                 res.send({
@@ -47,8 +47,8 @@ router.put("/:name", async (req, res) => {
         );
 });
 
-router.delete("/:name", async (req, res) => {
-    await Dish.findOneAndDelete({ name: req.params.name })
+router.delete("/:id", async (req, res) => {
+    await Dish.findByIdAndDelete(req.params.id)
         .then((response) => res.send(response))
         .catch((err) =>
             res

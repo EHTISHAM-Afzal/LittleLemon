@@ -38,6 +38,9 @@ TablesRoutes.get("/:id", async (req, res) => {
 TablesRoutes.post("/", async (req, res) => {
     const { error } = ValidateTable(req.body);
     if (error) return res.status(400).send(error.message);
+    // check if the table is already booked on the same date
+    const isTableBooked = await BookingTable.findOne({ date: req.body.date, time: req.body.time }) 
+    if (isTableBooked) return res.status(400).send("Table is already booked")
     await BookingTable.create(req.body)
         .then((response) => res.send(response))
         .catch((err) =>
