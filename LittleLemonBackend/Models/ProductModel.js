@@ -10,9 +10,9 @@ const DishSchema = new Schema({
     catagory: { type: Schema.Types.ObjectId, ref: "Catagory", required: true },
 });
 
-export const Dish = mongoose.model("Dish", DishSchema);
+export const Product = mongoose.model("Product", DishSchema);
 
-export const validateDish = (dish) => {
+export const validateProduct = (dish) => {
     const schema = Joi.object({
         name: Joi.string().min(3).max(15).required(),
         price: Joi.number().required(),
