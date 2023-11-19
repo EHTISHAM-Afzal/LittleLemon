@@ -6,7 +6,7 @@ router.get("/", async (req, res) => {
     const { category } = req.query
     if (category) {
         console.log(category)
-        await Product.find({ category: category }).populate("category")
+        await Product.find({ category: category }).populate("Category")
             .then((response) => res.send(response))
             .catch((err) =>
                 res.status(400).send({ message: "Oops cant find the Product", error: err })
