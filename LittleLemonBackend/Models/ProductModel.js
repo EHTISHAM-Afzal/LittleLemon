@@ -7,7 +7,7 @@ const DishSchema = new Schema({
     price: { type: Number, required: true },
     description: { type: String, required: true },
     image: { type: String, required: true },
-    catagory: { type: Schema.Types.ObjectId, ref: "Catagory", required: true },
+    category: { type: Schema.Types.ObjectId, ref: "category", required: true },
 });
 
 export const Product = mongoose.model("Product", DishSchema);
@@ -18,7 +18,7 @@ export const validateProduct = (dish) => {
         price: Joi.number().required(),
         description: Joi.string().required(),
         image: Joi.string().required(),
-        catagory: Joi.string().required(),
+        category: Joi.string().required(),
     });
     return schema.validate(dish);
 };
