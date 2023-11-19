@@ -1,7 +1,7 @@
 import express from "express";
 import morgan from 'morgan';
 import ProductRoutes from './Routes/Product.js'
-import categoriesRouter from './Routes/Catagories.js'
+import categoriesRouter from './Routes/Categories.js'
 import connectDB from './MongoDB/Connect.js';
 import * as dotenv from 'dotenv';
 import cors from 'cors';
