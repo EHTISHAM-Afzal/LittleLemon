@@ -7,7 +7,7 @@ const DishSchema = new Schema({
     price: { type: Number, required: true },
     description: { type: String, required: true },
     image: { type: String, required: true },
-    category: { type: Schema.Types.ObjectId, ref: "category", required: true },
+    category: { type: Schema.Types.ObjectId, ref: "Category", required: true },
 });
 
 export const Product = mongoose.model("Product", DishSchema);

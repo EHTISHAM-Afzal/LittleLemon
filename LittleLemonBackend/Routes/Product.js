@@ -3,10 +3,10 @@ import { Product, validateProduct } from "../Models/ProductModel.js";
 const router = express.Router();
 
 router.get("/", async (req, res) => {
-    const { category } = req.query
-    if (category) {
-        console.log(category)
-        await Product.find({ category: category }).populate("Category")
+    const { category: requestedCategory } = req.query
+    if (requestedCategory) {
+        console.log(requestedCategory)
+        await Product.find({ category: requestedCategory }).populate("category")
             .then((response) => res.send(response))
             .catch((err) =>
                 res.status(400).send({ message: "Oops cant find the Product", error: err })
@@ -16,7 +16,7 @@ router.get("/", async (req, res) => {
         await Product.find().populate("category")
             .then((response) => res.send(response))
             .catch((err) =>
-                res.status(400).send({ message: "Oops cant find the Product", error: err })
+                res.status(400).send({ message: "Oops cant find the Products", error: err })
             );
     }
 });
