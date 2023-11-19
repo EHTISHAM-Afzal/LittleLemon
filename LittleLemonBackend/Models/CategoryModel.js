@@ -7,7 +7,7 @@ const categorySchema = new mongoose.Schema({
 
 export const Category = mongoose.model("Category", categorySchema);
 
-export const validatecategory = (category) => {
+export const validateCategory = (category) => {
     const schema = joi.object({
         name: joi.string().min(3).required()
     })
