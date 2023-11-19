@@ -1,43 +1,44 @@
 import express from "express"
-import { Catagory, validateCatagory } from "../Models/CatagoryModel.js";
+import { Category, validatecategory } from "../Models/CatagoryModel.js";
+
 
 const catagoriesRouter = express.Router();
 
 
 catagoriesRouter.get("/", async (req, res) => {
-    await Catagory
+    await Category
         .find()
         .then((response) => res.send(response))
         .catch((err) =>
             res
                 .status(400)
-                .send({ message: "Oops cant find the Catagory", error: err.message })
+                .send({ message: "Oops cant find the category", error: err.message })
         );
 });
 
 catagoriesRouter.get("/:id", async (req, res) => {
-    await Catagory
+    await Category
         .findById(req.params.id)
         .then((response) => res.send(response))
         .catch((err) =>
             res
                 .status(400)
-                .send({ message: "Oops cant find the Catagory", error: err.message })
+                .send({ message: "Oops cant find the category", error: err.message })
         );
 });
 
 catagoriesRouter.post("/", (req, res) => {
-    const catagory = new Catagory({
+    const category = new Category({
         name: req.body.name,
     });
-    const { error } = validateCatagory(req.body);
+    const { error } = validatecategory(req.body);
     if (error) return res.status(400).send(error.message);
-    catagory.save()
+    category.save()
         .then((r) => res.send(r))
         .catch((err) => {
             if (err.code === 11000) {
                 // Duplicate cataory
-                return res.status(422).send({ message: 'catagory already exists!' });
+                return res.status(422).send({ message: 'category already exists!' });
             }
             // Some other error
             return res.status(400).send({ message: "Oops cant save", error: err.message })
@@ -46,31 +47,31 @@ catagoriesRouter.post("/", (req, res) => {
 });
 
 catagoriesRouter.put("/:id", async (req, res) => {
-    const { error } = validateCatagory(req.body);
+    const { error } = validatecategory(req.body);
     if (error) return res.status(400).send(error.message);
-    await Catagory
+    await Category
         .findByIdAndUpdate(req.params.id, req.body, { new: true })
         .then((response) =>
             res.send({
-                message: "Catagory updated the new data is ",
+                message: "category updated the new data is ",
                 response: response,
             })
         )
         .catch((err) =>
             res
                 .status(400)
-                .send({ message: "Oops cant update the Catagory", error: err.message })
+                .send({ message: "Oops cant update the category", error: err.message })
         );
 });
 
 catagoriesRouter.delete("/:id", async (req, res) => {
-    await Catagory
+    await Category
         .findOneAndDelete( req.params.id )
         .then((response) => res.send(response))
         .catch((err) =>
             res
                 .status(400)
-                .send({ message: "Oops cant delete the Catagory", error: err.message })
+                .send({ message: "Oops cant delete the category", error: err.message })
         );
 });
 
