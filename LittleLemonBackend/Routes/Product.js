@@ -5,7 +5,6 @@ const router = express.Router();
 router.get("/", async (req, res) => {
     const { category: requestedCategory } = req.query
     if (requestedCategory) {
-        console.log(requestedCategory)
         await Product.find({ category: requestedCategory }).populate("category")
             .then((response) => res.send(response))
             .catch((err) =>
